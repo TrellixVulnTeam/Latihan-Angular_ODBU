@@ -1,0 +1,38 @@
+<br><br>
+<button type="button"class="btn btn-outline-primary"> <a routerLink="/komponen">Tambah product</a> </button>
+<br><br>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Id product</th>
+        <th scope="col">Nama product</th>
+        <th scope="col">Id supplier</th>
+        <th scope="col">Id category</th>
+        <th scope="col">quantityPerUnit</th>
+        <th scope="col">unitPrice</th>
+        <th scope="col">unitInStock</th>
+        <th scope="col">unitInOrder</th>
+        <th scope="col">reOrderLevel</th>
+        <th scope="col">discontinued</th>
+        <th scope="col">Action</th>
+        <th scope="col">delete</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listproduct; let indexOfElements=index;">
+            <td> {{item.productId}} </td>
+            <td> {{item.productName}} </td>
+            <td> {{item.supplierId}} </td>
+            <td> {{item.categoryId}} </td>
+            <td> {{item.quantityPerUnit}} </td>
+            <td> {{item.unitPrice}} </td>
+            <td> {{item.unitInStock}} </td>
+            <td> {{item.unitsOnOrder}} </td>
+            <td> {{item.reOrderLevel}} </td>
+            <td> {{item.discontinued}} </td>
+            <td> <a routerLink="/komponenupdate/{{item.productId}}">Edit</a> </td>
+            <!-- <td> <button (click)="delete()"> delete </button> </td> -->
+            <!-- <td> <a routerLink="/komponendelete/{{item.productId}}">delete</a> </td> -->
+        </tr>
+    </tbody>
+</table>

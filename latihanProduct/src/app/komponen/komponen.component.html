@@ -1,0 +1,84 @@
+<form action="" [formGroup]="komponenForm">
+    
+    <div style="text-align: left;">
+        
+        <label style="text-align: left; margin-top: 2em;">komponen ID : </label>
+        <input type="text" class="form-control me-1" formControlName="productId">
+        <span *ngIf="!komponenForm.get('productId')?.valid && 
+        komponenForm.get('productId')?.touched" class="text-danger"> tidak dapat dikosongkan </span>
+    </div>
+ 
+    <div style="text-align: left;">
+        
+        <label style="text-align: left; margin-top: 2em;">komponen Nama : </label>
+        <input type="text" class="form-control me-1" formControlName="productName">
+        <span *ngIf="!komponenForm.get('productName')?.valid && 
+        komponenForm.get('productName')?.touched" class="text-danger"> tidak dapat dikosongkan </span>
+    </div>
+
+    <div style="text-align: left;">
+        
+        <label style="text-align: left; margin-top: 2em;">komponen supplierId :</label>
+        <input type="text" class="form-control me-1" formControlName="supplierId">
+        <span *ngIf="!komponenForm.get('supplierId')?.valid && 
+        komponenForm.get('supplierId')?.touched" class="text-danger"> tidak dapat dikosongkan </span>
+    </div>
+
+    <div style="text-align: left;">
+        
+        <label style="text-align: left; margin-top: 2em;">komponen categoryId :</label>
+        <input type="text" class="form-control me-1" formControlName="categoryId">
+        <span *ngIf="!komponenForm.get('categoryId')?.valid && 
+        komponenForm.get('categoryId')?.touched" class="text-danger"> tidak dapat dikosongkan </span>
+    </div>
+
+    <div style="text-align: left;">
+        
+        <label style="text-align: left; margin-top: 2em;">komponen quantityPerUnit :</label>
+        <input type="text" class="form-control me-1" formControlName="quantityPerUnit">
+        <span *ngIf="!komponenForm.get('quantityPerUnit')?.valid && 
+        komponenForm.get('quantityPerUnit')?.touched" class="text-danger"> tidak dapat dikosongkan </span>
+    </div>
+
+    <div style="text-align: left;">
+        
+        <label style="text-align: left; margin-top: 2em;">komponen unitPrice :</label>
+        <input type="text" class="form-control me-1" formControlName="unitPrice">
+        <span *ngIf="!komponenForm.get('unitPrice')?.valid && 
+        komponenForm.get('unitPrice')?.touched" class="text-danger"> tidak dapat dikosongkan </span>
+    </div>
+
+    <div style="text-align: left;">
+        
+        <label style="text-align: left; margin-top: 2em;">komponen unitInStock :</label>
+        <input type="text" class="form-control me-1" formControlName="unitInStock">
+        <span *ngIf="!komponenForm.get('unitInStock')?.valid && 
+        komponenForm.get('unitInStock')?.touched" class="text-danger"> tidak dapat dikosongkan </span>
+    </div>
+
+    <div style="text-align: left;">
+        
+        <label style="text-align: left; margin-top: 2em;">komponen unitInOrder :</label>
+        <input type="text" class="form-control me-1" formControlName="unitsOnOrder">
+        <span *ngIf="!komponenForm.get('unitsOnOrder')?.valid && 
+        komponenForm.get('unitsOnOrder')?.touched" class="text-danger"> tidak dapat dikosongkan </span>
+    </div>
+
+    <div style="text-align: left;">
+        
+        <label style="text-align: left; margin-top: 2em;">komponen reOrderLevel :</label>
+        <input type="text" class="form-control me-1" formControlName="reOrderLevel">
+        <span *ngIf="!komponenForm.get('reOrderLevel')?.valid && 
+        komponenForm.get('reOrderLevel')?.touched" class="text-danger"> tidak dapat dikosongkan </span>
+    </div>
+
+    <div style="text-align: left;">
+        
+        <label style="text-align: left; margin-top: 2em;">komponen discontinued :</label>
+        <input type="text" class="form-control me-1" formControlName="discontinued">
+        <span *ngIf="!komponenForm.get('discontinued')?.valid && 
+        komponenForm.get('discontinued')?.touched" class="text-danger"> tidak dapat dikosongkan </span>
+    </div>
+    
+    <button type="submit" (click)="simpan()" class="btn btn-secondary" style="margin-top: 1em;"> entry </button>
+</form>
