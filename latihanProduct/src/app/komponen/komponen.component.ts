@@ -84,34 +84,4 @@ export class KomponenComponent implements OnInit {
     
   }
 
-  delete() {
-    this.komponenService.deleteKategori(this.productId);
-  }
-
-  add() {
-    if (this.komponenForm?.valid) {
-      const komponen = new Komponen();
-      komponen.productId = this.komponenForm?.controls.id.value;
-      komponen.productName = this.komponenForm?.controls.productName.value;
-      komponen.supplierId = this.komponenForm?.controls.supplierId.value; 
-      komponen.categoryId = this.komponenForm?.controls.categoryId.value; 
-      komponen.quantityPerUnit = this.komponenForm?.controls.quantityPerUnit.value; 
-      komponen.unitPrice = this.komponenForm?.controls.unitPrice.value; 
-      komponen.unitInStock = this.komponenForm?.controls.unitInStock.value; 
-      komponen.unitsOnOrder = this.komponenForm?.controls.unitsInOrder.value; 
-      komponen.reOrderLevel = this.komponenForm?.controls.reOrderLevel.value; 
-      komponen.discontinued = this.komponenForm?.controls.discontinued.value; 
-
-      this.komponenService.addKategori(komponen).subscribe(
-        hasil => {
-          console.log(hasil);
-        }
-      );
-
-    } else {
-      alert("wajib diisi");
-    }
-      
-  }
-
 }

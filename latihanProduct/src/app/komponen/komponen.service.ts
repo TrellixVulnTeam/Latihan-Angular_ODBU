@@ -30,7 +30,7 @@ export class KomponenService {
 
   deleteKategori(id : BigInteger) : Observable<any> {
     return this.httpClient.get(environment.baseUrl + '/deleteproductjson/' + id)
-    .pipe(map(data => data as Komponen[]));
+    .pipe(map(data => data ));
   }
 
   addKategori(komponen : Komponen) : Observable<any> {

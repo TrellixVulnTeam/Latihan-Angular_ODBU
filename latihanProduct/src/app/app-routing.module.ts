@@ -7,8 +7,7 @@ const routes: Routes = [
 
   {path:'komponen',component:KomponenComponent},
   {path:'komponenupdate/:id', component:KomponenComponent},
-  {path:'komponenadd/', component:KomponenComponent},
-  {path:'komponendelete/:id', component:KomponenComponent},
+  {path:'komponendelete/:id', component:KomponenlistComponent},
   {path:'komponenlist', component:KomponenlistComponent}
     
 ];

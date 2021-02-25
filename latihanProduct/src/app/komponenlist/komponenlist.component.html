@@ -1,6 +1,10 @@
 <br><br>
-<button type="button"class="btn btn-outline-primary"> <a routerLink="/komponen">Tambah product</a> </button>
+<button type="button" class="btn btn-outline-primary"> <a routerLink="/komponen">Tambah product</a> </button>
 <br><br>
+<form action="" [formGroup]="cariForm">
+    <p>Masukan Id : <input type="text" formControlName="cari"></p>
+    <button class="btn btn-outline-primary" type="submit" (click)="cariProduct()">cari</button>
+</form>
 <table class="table table-hover">
     <thead>
     <tr>
@@ -31,8 +35,7 @@
             <td> {{item.reOrderLevel}} </td>
             <td> {{item.discontinued}} </td>
             <td> <a routerLink="/komponenupdate/{{item.productId}}">Edit</a> </td>
-            <!-- <td> <button (click)="delete()"> delete </button> </td> -->
-            <!-- <td> <a routerLink="/komponendelete/{{item.productId}}">delete</a> </td> -->
+            <td> <button (click)="delete(item.productId)"> delete </button> </td>
         </tr>
     </tbody>
 </table>
