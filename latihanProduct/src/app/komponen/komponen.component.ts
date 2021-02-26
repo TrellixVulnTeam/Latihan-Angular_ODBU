@@ -14,6 +14,7 @@ export class KomponenComponent implements OnInit {
 
   productId!:BigInteger;
   komponenForm!:FormGroup;
+  id!:BigInteger;
 
   constructor(private komponenService: KomponenService, private route: ActivatedRoute, private router : Router) {
     this.komponenForm = new FormGroup({
@@ -33,9 +34,9 @@ export class KomponenComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.params.subscribe(rute => {
-      this.productId = rute.id;
-      if(this.productId) {
-        this.komponenService.getKategori(this.productId).subscribe(hasil => {
+      this.id = rute.id;
+      if(this.id) {
+        this.komponenService.getKategori(this.id).subscribe(hasil => {
           if(hasil) {
             this.komponenForm.get('productId')?.setValue(hasil.productId);
             this.komponenForm.get('productName')?.setValue(hasil.productName);
@@ -69,19 +70,39 @@ export class KomponenComponent implements OnInit {
       komponen.reOrderLevel = this.komponenForm?.controls.reOrderLevel.value; 
       komponen.discontinued = this.komponenForm?.controls.discontinued.value; 
       console.log(komponen);
-      this.komponenService.simpanKategori(komponen, false).subscribe(
+
+      if (this.id){ 
+        this.komponenService.simpanKategori(komponen, false).subscribe(
+          hasil => {
+            console.log(hasil);
+            this.router.navigateByUrl('/komponenlist');
+          }, error => {
+            console.log(error);
+          }
+        );
+      } else {
+        this.komponenService.addKategori(komponen).subscribe(
         hasil => {
           console.log(hasil);
-          this.router.navigateByUrl('/komponenlist')
+          this.router.navigateByUrl('/komponenlist');
         }, error => {
           console.log(error);
         }
       );
+
+      }
+
+      
     } else {
       alert('wajib diisi')
-    }
+    }    
+  }
 
-    
+  delete() {
+    this.komponenService.deleteKategori(this.productId).subscribe(hasil => {
+      console.log(hasil)
+      this.router.navigateByUrl('/komponenlist');
+    })
   }
 
 }

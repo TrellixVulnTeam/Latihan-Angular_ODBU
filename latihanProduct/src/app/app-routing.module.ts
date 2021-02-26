@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { HomeComponent } from './home/home.component';
 import { KomponenComponent } from './komponen/komponen.component';
 import { KomponenlistComponent } from './komponenlist/komponenlist.component';
 
 const routes: Routes = [
 
-  {path:'komponen',component:KomponenComponent},
+  {path:'/',component:HomeComponent},
+  {path:'komponen/:id',component:KomponenComponent},
   {path:'komponenupdate/:id', component:KomponenComponent},
-  {path:'komponendelete/:id', component:KomponenlistComponent},
-  {path:'komponenlist', component:KomponenlistComponent}
+  {path:'komponenlist', canActivate: [AuthGuardService], component:KomponenlistComponent}
     
 ];
 

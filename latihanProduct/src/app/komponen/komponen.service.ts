@@ -11,20 +11,27 @@ export class KomponenService {
   constructor(private httpClient: HttpClient) { }
 
   getKategori(id : BigInteger): Observable<any> {
+    console.log(id);
     return this.httpClient.get(environment.baseUrl + 'editproductjson/' + id)
-    .pipe(map(data => data));
+    .pipe(map(data => data as Komponen[]));
   }
 
-  getKategoriAll() : Observable<any> {
-    return this.httpClient.get(environment.baseUrl + '/productlistjson/')
-    .pipe(map(data => data as Komponen[]));
+  getKategoriAll(id : BigInteger) : Observable<any> {
+    if (!id) {
+      return this.httpClient.get(environment.baseUrl + '/productlistjson/' + id)
+      .pipe(map(data => data as Komponen[]));
+    } else {
+      return this.httpClient.get(environment.baseUrl + '/productlistjson?cari=' + id)
+      .pipe(map(data => data as Komponen[]));
+    }
+    
   }
 
   simpanKategori(komponen : Komponen, isEdit : boolean): Observable<any> {
     let url = 'saveproductjson';
     if (isEdit) {
       url = 'saveproductjson';
-    }
+    } 
     return this.httpClient.post(environment.baseUrl + url, komponen);
   }
 
@@ -34,7 +41,7 @@ export class KomponenService {
   }
 
   addKategori(komponen : Komponen) : Observable<any> {
-    let url = 'insertproduct';
+    let url = 'insertproductjson';
     return this.httpClient.post(environment.baseUrl + url, komponen);
   }
 

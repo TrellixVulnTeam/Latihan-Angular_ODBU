@@ -25,8 +25,11 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/komponenupdate/1">komponen update</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="authservice.loggedIn">
           <a class="nav-link" routerLink="/komponenlist">komponen list</a>
+        </li>
+        <li class="nav-item" *ngIf="authservice.loggedIn">
+          <a class="nav-link" (click)="onLogout()">Logout</a>
         </li>
         
       </ul>

@@ -16,6 +16,7 @@ export class KomponenlistComponent implements OnInit {
   productId!:BigInteger;
   cariForm!:FormGroup;
   cari!:BigInteger;
+  searchStr = "";
 
   constructor(private komponenService: KomponenService, private route: ActivatedRoute, private router : Router) {
 
@@ -25,24 +26,29 @@ export class KomponenlistComponent implements OnInit {
 
    }
 
-
-
   ngOnInit(): void {
-        this.komponenService.getKategoriAll().subscribe(data => {
+        this.komponenService.getKategoriAll(this.productId).subscribe(data => {
         this.listproduct = data;
       })
     } 
 
-    delete(id : BigInteger) {
-        this.komponenService.deleteKategori(id);
-        console.log('masuk' + id);
-    }
-
     cariProduct() {
-      this.route.queryParams.subscribe(rute => {
-      this.cari = rute.id;
-      this.router.navigate(['/komponenlist'], { queryParams: { cari: this.cari } });
-    })
+
+      this.cari = this.cariForm?.controls.cari.value;
+      console.log('masuk' + this.cari);
+      if (!this.cari) {
+        this.ngOnInit;
+      } else {
+        console.log(this.cari);
+        this.komponenService.getKategoriAll(this.cari).subscribe(
+          hasil => {
+            if(hasil) {
+              this.listproduct = hasil;
+              console.log(hasil)
+            }
+          }
+        )
+      }
     }
 
   }
