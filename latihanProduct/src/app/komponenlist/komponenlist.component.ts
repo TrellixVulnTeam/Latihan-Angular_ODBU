@@ -52,17 +52,3 @@ export class KomponenlistComponent implements OnInit {
     }
 
   }
-
-
-
-
-
-  // delete() {
-  //   this.route.params.subscribe(rute => {
-  //     this.productId = rute.id;
-  //     this.komponenService.deleteKategori(this.productId);
-  //     this.router.navigateByUrl('/komponenlist');
-  //   })
-  // }
-
-

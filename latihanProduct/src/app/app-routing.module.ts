@@ -7,9 +7,9 @@ import { KomponenlistComponent } from './komponenlist/komponenlist.component';
 
 const routes: Routes = [
 
-  {path:'/',component:HomeComponent},
+  {path:'home',component:HomeComponent},
   {path:'komponen/:id',component:KomponenComponent},
-  {path:'komponenupdate/:id', component:KomponenComponent},
+  {path:'komponenupdate/:id', canActivate: [AuthGuardService], component:KomponenComponent},
   {path:'komponenlist', canActivate: [AuthGuardService], component:KomponenlistComponent}
     
 ];

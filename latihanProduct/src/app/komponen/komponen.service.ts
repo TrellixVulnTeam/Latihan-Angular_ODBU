@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Komponen } from './Komponen';
 import { map } from 'rxjs/operators';
+import { Login } from './Login';
 
 @Injectable()
 export class KomponenService {
@@ -18,7 +19,7 @@ export class KomponenService {
 
   getKategoriAll(id : BigInteger) : Observable<any> {
     if (!id) {
-      return this.httpClient.get(environment.baseUrl + '/productlistjson/' + id)
+      return this.httpClient.get(environment.baseUrl + '/productlistjson/')
       .pipe(map(data => data as Komponen[]));
     } else {
       return this.httpClient.get(environment.baseUrl + '/productlistjson?cari=' + id)
@@ -45,4 +46,12 @@ export class KomponenService {
     return this.httpClient.post(environment.baseUrl + url, komponen);
   }
 
+  // getUser() : Observable<any> {
+  //   return this.httpClient.post(environment.baseUrl + '/getuser/' , Login);
+  // }
+
+  getUser() : Observable<any> {
+    return this.httpClient.post(environment.baseUrl + 'login', Login)
+    .pipe(map(data => data));
+  }
 }

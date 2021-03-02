@@ -9,7 +9,7 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent implements OnInit{
   title = 'Welcome';
 
-  constructor(private authservice: AuthService){
+  constructor(public authservice: AuthService){
 
   }
 
@@ -20,5 +20,6 @@ export class AppComponent implements OnInit{
   onLogout() {
     this.authservice.logout();
   }
+
 
 }

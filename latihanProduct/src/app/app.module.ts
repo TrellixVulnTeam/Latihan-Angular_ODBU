@@ -9,8 +9,8 @@ import { KomponenlistComponent } from './komponenlist/komponenlist.component';
 import { FindPipe } from './find.pipe';
 import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
-import { Observable } from 'rxjs';
 import { AuthGuardService } from './auth/auth-guard.service';
+import { KomponenService } from './komponen/komponen.service';
 
 @NgModule({
   declarations: [
@@ -25,10 +25,9 @@ import { AuthGuardService } from './auth/auth-guard.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    Observable
+    HttpClientModule
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, KomponenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
